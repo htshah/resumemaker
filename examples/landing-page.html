@@ -65,12 +65,12 @@
 
 	<div id="myModal" class="modal fade"tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<form  method="post" id="form_signup">
+			<form method="post" id="form_signup">
 
 				<div style="padding:20px;" class="modal-content">
 					<div class="modal-header">
 
-						<center class="">Register To bookbird</center>
+						<center class="">Register</center>
 
 					</div>
 
@@ -110,7 +110,31 @@
 						<div class="row"> 
 							<div class="col-sm-12">
 								<div class="form-group">
-									<input id="regdob" type="text" value="01/01/1995" placeholder="D.O.B" name="regdob" class="form-control" />
+									<input id="regdob" type="text" value="" placeholder="D.O.B(dd/mm/yyyy)" name="regdob" class="form-control" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row"> 
+							<div class="col-sm-12">
+								<div class="form-group">
+									<input id="regskills" type="text" value="" placeholder="Skills" name="regskills" class="form-control" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row"> 
+							<div class="col-sm-12">
+								<div class="form-group">
+									<input id="regprojects" type="text" value="" placeholder="Projects" name="regprojects" class="form-control" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row"> 
+							<div class="col-sm-12">
+								<div class="form-group">
+									<input id="regexp" type="number" value="" placeholder="Work Exp(in years)" name="regexp" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -141,7 +165,7 @@
 				<div style="padding:20px;" class="modal-content">
 					<div class="modal-header">
 
-						<center class="">Login To bookbird</center>
+						<center class="">Login</center>
 
 					</div>
 
@@ -314,7 +338,18 @@
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="../assets/js/material-kit.js" type="text/javascript"></script>
 <script type="text/javascript">
-	
+		
+		$("#form_signup").click(function(){
+			$.post("app/signup.php",$("form#form_signup").serializeArray(),function(data){
+				
+			});
+		});
+			
+		$("#form_login").click(function(){
+			$.post("app/login.php",$("form#form_login").serializeArray(),function(data){
+				
+			});
+		});
 
 </script>
 
