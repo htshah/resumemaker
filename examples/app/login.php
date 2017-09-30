@@ -1,0 +1,26 @@
+<?php
+	require_once 'db.php';
+	require_once 'common.php';
+
+	if (existsPost(['email','password'])){
+		$mail = test_input($_POST["email"]);
+		$pass = test_input($_POST["password"]);
+		
+		$tablename = $TABLES['USER'];
+		$sql = "select * from $tablename where `email`='$email' and `password`='$pass' LIMIT 1";
+		$result = $conn->query($sql);
+		if ($result->num_rows == 1) {
+		    $response['success'] = 1;
+		    $response['message'] = 'Login successfull';
+		    session_start();
+		    $row = $result->fetch_assoc();
+		    $_SESSION['id'] = $row['id'];
+		    $_SESSION['name'] = $row['name'];
+		    $_SESSION['profile_pic'] = $row['profile_pic'];
+		} 
+		$conn->close();
+	}
+
+	die(json_encode($response));
+
+?>
