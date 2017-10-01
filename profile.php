@@ -104,12 +104,29 @@
 						                            		</div>
 						                            		<div class="row">
 						                            			<div class="col-md-2 text-center list-icon">
-																	<h4 class="material-icons">phone</h4>
+																	<h4 class="material-icons">email</h4>
 																</div>
 																<div class="col-md-10 text-left">
-																	<h4 class="list-content"><?=$response['user']['phone'];?></h4>
+																	<h4 class="list-content"><?=$response['user']['email'];?></h4>
 																</div>
-						                            		</div>	
+						                            		</div>
+						                            		<div class="row">
+						                            			<div class="col-md-2 text-center list-icon">
+																	<h4 class="material-icons">date_range</h4>
+																</div>
+																<div class="col-md-10 text-left">
+																	<h4 class="list-content"><?=$response['user']['dob'];?></h4>
+																</div>
+						                            		</div>
+						                            		<div class="row">
+						                            			<div class="col-md-2 text-center list-icon">
+																	<h4 class="material-icons">assignment</h4>
+																</div>
+																<div class="col-md-10 text-left">
+																	<h4 class="list-content">About me</h4>
+																	<p><?=$response['user']['description'];?></p>
+																</div>
+						                            		</div>
 				                            			</div>
 				                            		</div>
 				                            	</div>
@@ -117,14 +134,14 @@
 				                        </div>
 				                        <div class="tab-pane text-center" id="qualification">
 											<div class="row">
-												<div class="col-md-6">
-													<img src="assets/img/examples/chris5.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris7.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris9.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="assets/img/examples/chris6.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris8.jpg" class="img-rounded" />
+												<div class="col-md-12">
+													<div class="card">
+														<table class="table">
+															<tr>
+																<td>Hello</td>
+															</tr>
+														</table>
+													</div>
 												</div>
 											</div>
 				                        </div>
