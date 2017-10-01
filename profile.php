@@ -87,16 +87,30 @@
 				                    <div class="tab-content gallery">
 										<div class="tab-pane active" id="personal">
 				                            <div class="row">
-				                            	<div class="col-md-offset-1 col-md-10">
+				                            	<div class="col-md-offset-2 col-md-8">
 				                            		<div class="card">
-					                            		<div class="row">
-					                            			<div class="col-md-3 center-align">
-																<h4 class="material-icons">phone</h4>
-															</div>
-															<div class="col-md-6">
-																<h4><?=$response['user']['phone'];?></h4>
-															</div>
-					                            		</div>	
+				                            			<div class="header header-primary text-center">
+				                            				<h4>Basic Profile</h4>
+				                            				<div class="header-description"><?=$response['user']['name'];?></div>
+				                            			</div>
+				                            			<div class="content">
+						                            		<div class="row">
+						                            			<div class="col-md-2 text-center list-icon">
+																	<h4 class="material-icons">phone</h4>
+																</div>
+																<div class="col-md-10 text-left">
+																	<h4 class="list-content"><?=$response['user']['phone'];?></h4>
+																</div>
+						                            		</div>
+						                            		<div class="row">
+						                            			<div class="col-md-2 text-center list-icon">
+																	<h4 class="material-icons">phone</h4>
+																</div>
+																<div class="col-md-10 text-left">
+																	<h4 class="list-content"><?=$response['user']['phone'];?></h4>
+																</div>
+						                            		</div>	
+				                            			</div>
 				                            		</div>
 				                            	</div>
 				                            </div>
