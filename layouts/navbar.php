@@ -15,6 +15,11 @@
 			<ul class="nav navbar-nav navbar-right">
 				
 				<li>
+					<a href="/resumemaker">
+						Home
+					</a>
+				</li>
+				<li>
 					<a href="#!">
 						Resumes
 					</a>

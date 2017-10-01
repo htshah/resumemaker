@@ -87,14 +87,18 @@
 				                    <div class="tab-content gallery">
 										<div class="tab-pane active" id="personal">
 				                            <div class="row">
-												<div class="col-md-6">
-													<img src="assets/img/examples/chris1.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris0.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="assets/img/examples/chris3.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris4.jpg" class="img-rounded" />
-												</div>
+				                            	<div class="col-md-offset-1 col-md-10">
+				                            		<div class="card">
+					                            		<div class="row">
+					                            			<div class="col-md-3 center-align">
+																<h4 class="material-icons">phone</h4>
+															</div>
+															<div class="col-md-6">
+																<h4><?=$response['user']['phone'];?></h4>
+															</div>
+					                            		</div>	
+				                            		</div>
+				                            	</div>
 				                            </div>
 				                        </div>
 				                        <div class="tab-pane text-center" id="qualification">
