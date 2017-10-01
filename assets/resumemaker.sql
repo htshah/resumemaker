@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2017 at 03:44 PM
+-- Generation Time: Oct 01, 2017 at 04:33 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -218,7 +218,7 @@ CREATE TABLE `qualification` (
 INSERT INTO `qualification` (`id`, `uid`, `name`, `institute`, `year`) VALUES
 (1, 10, 'Masters', 'Universidade Camilo Castelo Branco', 1995),
 (2, 19, 'Phd.', 'Southwestern Christian College', 2006),
-(3, 17, 'Diploma', 'Université de Toamasina', 1995),
+(3, 21, 'Diploma', 'Universite de Toamasina', 2013),
 (4, 3, 'Bsc. IT', 'National Institute of Technology, Durgapur', 1998),
 (5, 20, 'Bsc. IT', 'Community College of Denver', 1995),
 (6, 5, 'Phd.', 'Palestine Technical College-Dier Elbalah', 2013),
@@ -303,7 +303,7 @@ INSERT INTO `qualification` (`id`, `uid`, `name`, `institute`, `year`) VALUES
 (85, 9, 'HSC', 'Institut National des Sciences Appliquées de Lyon', 2010),
 (86, 1, 'Engineering', 'Khmelnitsky National University', 1995),
 (87, 19, 'Diploma', 'Hokkaido Tokai University', 2014),
-(88, 21, 'SSC', 'Armstrong University', 2016),
+(88, 21, 'SSC', 'Armstrong University', 2010),
 (89, 2, 'SSC', 'Universitas Merdeka Malang', 1991),
 (90, 14, 'Engineering', 'College of Technology at Dammam', 2011),
 (91, 2, 'SSC', 'Ecole Supérieure des Sciences Commerciales d\'Angers', 1990),
@@ -326,34 +326,115 @@ INSERT INTO `qualification` (`id`, `uid`, `name`, `institute`, `year`) VALUES
 CREATE TABLE `skills` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `name` text NOT NULL
+  `name` text NOT NULL,
+  `percentage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `skills`
 --
 
-INSERT INTO `skills` (`id`, `uid`, `name`) VALUES
-(1, 8, 'Navy'),
-(2, 1, 'Tax Research'),
-(3, 4, 'DWBI'),
-(4, 21, 'SolidWorks'),
-(5, 18, 'Agarose Gel Electrophoresis'),
-(6, 6, 'FCL'),
-(7, 16, 'Ambulance'),
-(8, 21, 'Logistics'),
-(9, 18, 'SBS'),
-(10, 2, 'MFS'),
-(11, 2, 'Obedience'),
-(12, 3, 'ePolicy Orchestrator'),
-(13, 16, 'Orchestral Music'),
-(14, 9, 'IATA'),
-(15, 6, 'IEC 61131-3'),
-(16, 20, 'Ecological Restoration'),
-(17, 20, 'RED MX'),
-(18, 8, 'Yahoo Search Marketing'),
-(19, 11, 'Zend Certified Engineer'),
-(20, 4, 'KPI Dashboards');
+INSERT INTO `skills` (`id`, `uid`, `name`, `percentage`) VALUES
+(1, 14, 'QMF', 36),
+(2, 4, 'Back Office', 32),
+(3, 11, 'TMF', 60),
+(4, 3, 'Urinalysis', 72),
+(5, 20, 'RTO', 52),
+(6, 7, 'AQTF compliance', 63),
+(7, 10, 'IFE', 77),
+(8, 1, 'Wound Care', 57),
+(9, 9, 'Area Rugs', 64),
+(10, 6, 'Trade Marketing', 33),
+(11, 2, 'HP Networking', 56),
+(12, 7, 'Revenue Cycle', 71),
+(13, 19, 'Long-term Customer Relationships', 93),
+(14, 19, 'Hospitality', 52),
+(15, 13, 'Internal Audit', 34),
+(16, 11, 'UVLayout', 35),
+(17, 16, 'Flight Test', 65),
+(18, 16, 'GCC', 70),
+(19, 11, 'ICAO', 43),
+(20, 15, 'IPv6', 76),
+(21, 10, 'Operational Efficiency', 79),
+(22, 14, 'Engineering', 44),
+(23, 7, 'SBA 504', 76),
+(24, 11, 'VRF', 83),
+(25, 19, 'Smartboard', 46),
+(26, 9, 'DVD Authoring', 80),
+(27, 20, 'NVU', 80),
+(28, 7, 'PMAs', 48),
+(29, 5, 'Strategic Partnerships', 54),
+(30, 19, 'MLOAD', 46),
+(31, 12, 'QS1', 57),
+(32, 21, 'NC-Verilog', 36),
+(33, 13, 'Biodiversity', 81),
+(34, 4, 'GMLAN', 58),
+(35, 3, 'European Law', 57),
+(36, 13, 'Ion Exchange', 45),
+(37, 15, 'CTL', 82),
+(38, 8, 'TMG', 54),
+(39, 13, 'Drama', 35),
+(40, 16, 'Omgeo Oasys', 73),
+(41, 16, 'VCAT', 68),
+(42, 7, 'XFOIL', 94),
+(43, 3, 'Embedded SQL', 59),
+(44, 17, 'VC-1', 52),
+(45, 9, 'VTK', 70),
+(46, 17, 'Kitchen Remodeling', 62),
+(47, 3, 'Leases', 91),
+(48, 1, 'Sarbanes-Oxley Act', 34),
+(49, 3, 'Interviews', 72),
+(50, 6, 'Hoshin Kanri', 79),
+(51, 19, 'Custom Homes', 76),
+(52, 17, 'Direct Sales', 50),
+(53, 14, 'MBD', 94),
+(54, 2, 'Document Imaging', 49),
+(55, 12, 'IGRP', 52),
+(56, 3, 'Job Search Strategies', 76),
+(57, 21, 'Ultipro', 73),
+(58, 9, 'DFMEA', 71),
+(59, 18, 'Utility Mapping', 52),
+(60, 14, 'Live Events', 87),
+(61, 20, 'BC/DR', 52),
+(62, 10, 'FP', 61),
+(63, 17, 'Jet Engines', 30),
+(64, 13, 'Supply Chain Management', 84),
+(65, 14, 'GS1', 48),
+(66, 8, 'SDL', 87),
+(67, 19, 'Packaging', 53),
+(68, 21, 'Ektron Content Management System', 77),
+(69, 3, 'Water Resources', 32),
+(70, 18, 'TPMS', 33),
+(71, 12, 'Twitter API', 84),
+(72, 7, 'First Year Experience', 65),
+(73, 4, 'Dutch', 91),
+(74, 7, 'Book Reviews', 46),
+(75, 9, 'Theory', 57),
+(76, 9, 'Multithreading', 30),
+(77, 19, 'HTML Scripting', 58),
+(78, 15, 'DWR', 40),
+(79, 15, 'Report Writing', 30),
+(80, 7, 'DX200', 80),
+(81, 5, 'PWB', 73),
+(82, 5, 'HP Service Manager', 78),
+(83, 18, 'iGrafx', 65),
+(84, 14, 'Obedience', 33),
+(85, 8, 'IHT', 89),
+(86, 16, 'PET-CT', 33),
+(87, 4, 'Google Analytics', 90),
+(88, 4, 'Zebrafish', 70),
+(89, 10, 'Workplace Violence', 65),
+(90, 21, 'Testing Types', 69),
+(91, 6, 'JScript', 71),
+(92, 20, 'TCL', 51),
+(93, 16, 'Emergency Services', 75),
+(94, 5, 'IGMP Snooping', 55),
+(95, 19, 'Typing', 82),
+(96, 13, 'Retail', 91),
+(97, 12, 'PLC', 83),
+(98, 6, 'Air Conditioning', 91),
+(99, 19, 'Ultrasonic Welding', 38),
+(100, 2, 'Area Rugs', 88);
 
 -- --------------------------------------------------------
 
@@ -486,7 +567,7 @@ ALTER TABLE `qualification`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT for table `user`
 --

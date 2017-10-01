@@ -33,6 +33,15 @@
 	margin-top: 20px;
 }
 
-.card .list-content{
-	
+.card{
+	margin-bottom: 20px;
+}
+
+.timeline{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: -20px;
+	height: calc(100% + 20px);
+	border-right: 1px dashed #adadad;
 }

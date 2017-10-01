@@ -45,7 +45,11 @@
 	                        </div>
 	                        <div class="name">
 	                            <h3 class="title"><?=$response['user']['name'];?></h3>
-								<h6><?=$response['experience'][0]['title'];?></h6>
+	                            <?php if(count($response['experience'])> 0):?>
+									<h6><?=$response['experience'][0]['title'];?></h6>
+								<?php else:?>
+									<h6>Newbiee</h6>
+								<?php endif;?>
 	                        </div>
 	                    </div>
 	                </div>
@@ -133,41 +137,58 @@
 				                            </div>
 				                        </div>
 				                        <div class="tab-pane text-center" id="qualification">
-											<div class="row">
-												<div class="col-md-12">
-													<div class="card">
-														<table class="table">
-															<tr>
-																<td>Hello</td>
-															</tr>
-														</table>
-													</div>
+											<div class="row" style="position: relative;">
+												<div class="timeline"></div>
+												<div class="col-md-12 text-center" style="background: #fff;margin-bottom: 20px;">
+													<big>Born in <?=end(explode('/',$response['user']['dob']));?></big>
 												</div>
+												<?php foreach($response['qualifications'] as $qualification):?>
+													<div class="col-md-8 col-md-offset-2">
+														<div class="card">
+															<div class="content">
+																<big><?=$qualification['name'];?> from <?=$qualification['institute'];?> in year <?=$qualification['year'];?>
+																</big>
+															</div>
+														</div>
+													</div>
+												<?php endforeach;?>
 											</div>
 				                        </div>
 										<div class="tab-pane text-center" id="work">
-											<div class="row">
-												<div class="col-md-6">
-													<img src="assets/img/examples/chris4.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris6.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="assets/img/examples/chris7.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris5.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris9.jpg" class="img-rounded" />
-												</div>
+											<div class="row" style="position: relative;">
+												<?php if(count($response['experience'])> 0):?>
+													<?php foreach($response['experience'] as $experience):?>
+														<div class="col-md-8 col-md-offset-2">
+															<div class="card">
+																<div class="content text-left">
+																	<big>As a <b><?=$experience['title'];?></b></big>
+																	<p>At <a href="<?=$experience['company_site'];?>" target="_blank"><?=$experience['company']?></a> for <?=$experience['years']?> years</p>
+																</div>
+															</div>
+														</div>
+													<?php endforeach;?>
+												<?php else:?>
+													<h3>No past work experience..</h3>
+												<?php endif;?>
+												
 											</div>
 				                        </div>
 				                        <div class="tab-pane text-center" id="skills">
-											<div class="row">
-												<div class="col-md-6">
-													<img src="assets/img/examples/chris4.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris6.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="assets/img/examples/chris7.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris5.jpg" class="img-rounded" />
-													<img src="assets/img/examples/chris9.jpg" class="img-rounded" />
+												<div class="row">
+													<div class="col-md-12">
+														<?php foreach($response['skills'] as $skill):?>
+																<div class="row" style="margin-bottom: 20px;">
+																	<div class="col-md-3 text-right"><b><?=$skill['name'];?></b></div>
+																	<div class="col-md-9" style="padding-top: 10px;">
+																		<div class="progress">
+																			<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$skill['percentage'];?>%;">
+																			<span class="sr-only"><?=$skill['percentage'];?>%</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+														<?php endforeach;?>
+													</div>
 												</div>
 											</div>
 				                        </div>
