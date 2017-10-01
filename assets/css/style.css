@@ -1,0 +1,47 @@
+.navbar .navbar-nav > li > a{
+	outline: none;
+}
+
+.datepicker{
+	z-index: 2000;
+}
+
+.card .header{
+	box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: -40px;
+    padding: 20px 0;
+
+    height: initial !important;
+}
+
+.card .header .header-description{
+	margin-top: 14px;
+	font-size: 16px;
+}
+
+.card .content{
+	padding: 15px 20px;
+}
+
+.card .content *{
+	color: #555;
+}
+
+.add-margin-top{
+	margin-top: 20px;
+}
+
+.card{
+	margin-bottom: 20px;
+}
+
+.timeline{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: -20px;
+	height: calc(100% + 20px);
+	border-right: 1px dashed #adadad;
+}

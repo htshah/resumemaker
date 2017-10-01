@@ -3,7 +3,8 @@
 		'USER' => 'user',
 		'JOBEXP' => 'job_exp',
 		'QUALIFICATION' => 'qualification',
-		'SKILLS' => 'skills'
+		'SKILLS' => 'skills',
+		'PROJECTS' => 'projects',
 	];
 
 	function test_input($data) {
