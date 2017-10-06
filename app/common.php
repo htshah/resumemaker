@@ -29,6 +29,30 @@
 		return true;
 	}
 
+	function isEmptyPost($arr){
+		if(gettype($arr) !== "array"){
+			$arr = [$arr];
+		}
+
+		foreach($arr as $key){
+			if(empty($_POST[$key]))
+				return $key;
+		}
+		return null;
+	}
+
+	function isEmptyGet($arr){
+		if(gettype($arr) !== "array"){
+			$arr = [$arr];
+		}
+
+		foreach($arr as $key){
+			if(empty($_GET[$key]))
+				return $key;
+		}
+		return null;
+	}
+
 
 
 	$response = ['success'=>0];

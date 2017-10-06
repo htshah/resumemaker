@@ -3,7 +3,7 @@
 	require_once 'common.php';
 
 	if (existsPost(['email','password'])){
-		$mail = test_input($_POST["email"]);
+		$email = test_input($_POST["email"]);
 		$pass = test_input($_POST["password"]);
 		
 		$tablename = $TABLES['USER'];
@@ -17,7 +17,9 @@
 		    $_SESSION['id'] = $row['id'];
 		    $_SESSION['name'] = $row['name'];
 		    $_SESSION['profile_pic'] = $row['profile_pic'];
-		} 
+		}else{
+			$response['error'] = "Login unsuccessful";
+		}
 		$conn->close();
 	}
 

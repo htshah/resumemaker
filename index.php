@@ -96,7 +96,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
 						<h2 class="text-center title">Work with us</h2>
-						<h4 class="text-center description">We are hiring! If you are confident with you developing skills, drop a mail and we will get back to you.</h4>
+						<h4 class="text-center description">We are hiring! If you are confident with your developing skills, drop a mail and we will get back to you.</h4>
 						<form class="contact-form">
 							<div class="row">
 								<div class="col-md-6">
