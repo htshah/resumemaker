@@ -1,3 +1,12 @@
+<?php
+	if (session_status() == PHP_SESSION_NONE) {
+	    session_start();
+	}
+
+	if(!isset($_SESSION['id'])){
+		die("<script>window.location.href='/resumemaker/error.php?e=Please login to continue';</script>");
+	}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,7 +15,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Profile Page</title>
+	<title>Resume Maker | Edit Profile</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -22,31 +31,7 @@
 </head>
 
 <body class="profile-page">
-	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#!">Resume Maker</a>
-			</div>
-
-			<div class="collapse navbar-collapse" id="navigation-example">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="#!" target="">
-							Delete Profile
-						</a>
-					</li>
-										
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<?php require_once '/layouts/navbar.php';?>
 
 	<div class="wrapper">
 		<div class="header header-filter" style="background-image: url('assets/img/examples/city.jpg');"></div>
@@ -166,17 +151,8 @@
 		</div>
 
 	</div>
-	<footer class="footer">
-		<div class="container">
-			<nav class="pull-left">
-				
-			</nav>
-			<div class="copyright pull-right">
-				&copy; 2017, made with <i class="fa fa-heart heart"></i> by The Three Musquiteers
-			</div>
-		</div>
-	</footer>
-
+	
+	<?php require_once '/layouts/footer.php';?>
 
 </body>
 <!--   Core JS Files   -->

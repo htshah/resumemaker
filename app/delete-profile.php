@@ -4,7 +4,7 @@
 	}
 
 	if(!isset($_SESSION['id'])){
-		die("Unauthorized access");
+		die("<script>window.location.href='/resumemaker/error.php?e=Unauthorized access';</script>");
 	}
 
 	require_once 'db.php';
@@ -15,8 +15,7 @@
 
 	if($conn->query($sql) == true){
 		session_destroy();
-		die("Account deleted successfully");
+		die("<script>window.location.href='/resumemaker/error.php?e=Account deleted successfully';</script>");
 	}
-
-	die("Something went wrong. Please try again later");
+	die("<script>window.location.href='/resumemaker/error.php?e=Something went wrong. Please try again later';</script>");
 ?>
