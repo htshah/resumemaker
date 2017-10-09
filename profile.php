@@ -2,7 +2,9 @@
 	if (session_status() == PHP_SESSION_NONE) {
 	    session_start();
 	}
-
+	if(!existsGet(['id'])){
+		die("<script>window.location='/resumemaker';</script>");
+	}
 	require 'app/profile.php';
 ?>
 <!doctype html>
@@ -207,7 +209,6 @@
     
     <?php require_once 'layouts/footer.php';?>
 
-</body>
 	<!--   Core JS Files   -->
 	<script src="assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -221,5 +222,7 @@
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="assets/js/material-kit.js" type="text/javascript"></script>
+	<script src="assets/js/common.js" type="text/javascript"></script>
+</body>
 
 </html>

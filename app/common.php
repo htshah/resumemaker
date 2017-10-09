@@ -14,40 +14,40 @@
 	  	return $data;
 	}
 
-	function existsPost($arr){
-		foreach ($arr as $value) {
-			if(!isset($_POST[$value]))
+	function existsPost($arr,$except = []){
+		foreach ($arr as $value){
+			if(!isset($_POST[$value]) && !in_array($value,$except))
 				return false;
 		}
 		return true;
 	}
-	function existsGet($arr){
+	function existsGet($arr,$except = []){
 		foreach ($arr as $value) {
-			if(!isset($_GET[$value]))
+			if(!isset($_GET[$value]) && !in_array($value,$except))
 				return false;
 		}
 		return true;
 	}
 
-	function isEmptyPost($arr){
+	function isEmptyPost($arr,$except = []){
 		if(gettype($arr) !== "array"){
 			$arr = [$arr];
 		}
 
 		foreach($arr as $key){
-			if(empty($_POST[$key]))
+			if(empty($_POST[$key]) && !in_array($key,$except))
 				return $key;
 		}
 		return null;
 	}
 
-	function isEmptyGet($arr){
+	function isEmptyGet($arr, $except = []){
 		if(gettype($arr) !== "array"){
 			$arr = [$arr];
 		}
 
 		foreach($arr as $key){
-			if(empty($_GET[$key]))
+			if(empty($_GET[$key]) && !in_array($key,$except))
 				return $key;
 		}
 		return null;

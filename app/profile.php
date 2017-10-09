@@ -2,12 +2,16 @@
 	require_once 'db.php';
 	require_once 'common.php';
 
-	$response = [];
-	if(!existsGet(['id'])){
+	$id=null;
+	if(existsGet(['id'])){
+		$id = test_input($_GET['id']);
+	}else if(isset($_SESSION['id'])){
+		$id = $_SESSION['id'];
+	}else{
 		die("<script>window.location='/resumemaker';</script>");
 	}
 
-	$id = test_input($_GET['id']);
+	$response = [];
 
 	//User
 	$sql = "SELECT * from {$TABLES['USER']} where id=$id;";

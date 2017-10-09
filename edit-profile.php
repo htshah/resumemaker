@@ -1,11 +1,9 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
-if(!isset($_SESSION['id'])){
-	die("<script>window.location.href='/resumemaker/error.php?e=Please login to continue';</script>");
-}
+	require "app/profile.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,282 +25,285 @@ if(!isset($_SESSION['id'])){
 	<!-- CSS Files -->
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="assets/css/material-kit.css" rel="stylesheet"/>
+	<link href="assets/css/style.css" rel="stylesheet"/>
 
 </head>
-
 <body class="profile-page">
-	<?php require_once '/layouts/navbar.php';?>
+	<?php require_once 'layouts/navbar.php';?>
 
-	<div class="wrapper">
+    <div class="wrapper">
 		<div class="header header-filter" style="background-image: url('assets/img/examples/city.jpg');"></div>
 
 		<div class="main main-raised">
-			<div class="profile-content">
-				<div class="container">
-					<div class="row">
-						<div class="profile">
-							<div class="avatar">
-								<img src="assets/img/no-profile-img.jpg" alt="Circle Image" class="img-circle img-responsive ">
-							</div>
-							<div class="name">
-								<h3 id="title-name" class="title"><?=$_SESSION['name'];?></h3>
-								
-							</div>
-						</div>
+			<div class="container ">
+				<div class="row">
+					<h3 class="col-md-12">Edit Profile</h3>
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<div class="col-md-2">
+						<ul class="nav nav-pills" role="tablist">
+							<li class="active">
+	                            <a href="#personal" role="tab" data-toggle="tab">
+									<i class="material-icons">account_circle</i>
+	                                Basic
+	                            </a>
+	                        </li>
+	                        <li>
+	                            <a href="#qualification" role="tab" data-toggle="tab">
+									<i class="material-icons">account_balance</i>
+	                                Education
+	                            </a>
+	                        </li>
+							<li>
+								<a href="#work" role="tab" data-toggle="tab">
+									<i class="material-icons">work</i>
+									Job Exp
+								</a>
+							</li>
+							<li>
+	                            <a href="#skills" role="tab" data-toggle="tab">
+									<i class="material-icons">sort</i>
+									Skills
+	                            </a>
+	                        </li>
+	                    </ul>
 					</div>
-					<div class="description text-center">
-						
-					</div>
-
-					<div class="row">
-						
-
-						<!--form start-->
-
-
-
-
-
-
-
-						<form  method="post" action="update_profile.php" id="form_signup">
-
-							
-												</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-												<span id="signup-error" style="color:red"></span>
-												<!--*************** Signup     form*******  -->
-												<div class="row"> 
-													<div class="col-sm-12">
-														<div class="form-group">
-
-
-
-															<?php
-															require_once 'app/db.php';
-															require_once 'app/common.php';
-
-															if (existsPost(['email','password'])){
-																$email = test_input($_POST["email"]);
-																$pass = test_input($_POST["password"]);
-
-																$tablename = $TABLES['USER'];
-																$sql = "select * from $tablename where `email`='$email' and `password`='$pass' LIMIT 1";
-																$result = $conn->query($sql);
-																if ($result->num_rows == 1) {
-																	$response['success'] = 1;
-																	$response['message'] = 'Login successfull';
-																	session_start();
-																	$row = $result->fetch_assoc();
-																	$_SESSION['id'] = $row['id'];
-																	$_SESSION['name'] = $row['name'];
-																	$_SESSION['profile_pic'] = $row['profile_pic'];
-																	$_SESSION['passw'] = $row['password'];
-																	$_SESSION['phone'] = $row['phone'];
-																	$_SESSION['dob'] = $row['dob'];
-
-																}else{
-																	$response['error'] = "Login unsuccessful";
-																}
-
-															}
-
-
-
-															?>
-
-
-
-
-												<!--div class="row"> 
-													<div class="col-sm-12">
-														<div class="form-group">
-															<input id="regskills" type="text" value="" placeholder="Skills" name="regskills" class="form-control" />
-														</div>
-													</div>
-												</div>
-
-												<div class="row"> 
-													<div class="col-sm-12">
-														<div class="form-group">
-															<input id="regprojects" type="text" value="" placeholder="Projects" name="regprojects" class="form-control" />
-														</div>
-													</div>
-												</div>
-
-												<div class="row"> 
-													<div class="col-sm-12">
-														<div class="form-group">
-															<input id="regexp" type="number" value="" placeholder="Work Exp(in years)" name="regexp" class="form-control" />
-														</div>
-													</div>
-												</div!-->
-
-
-
-<div class="modal-content">
-
-
-								<div class="modal-body">
-
-
-
-
-
-									
-									<div class="modal-header">
-										<h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
-									</div>
-									<div class="modal-body">
-										<div class="row">
-											
-										</div>
-										<form method="post" id="form_signup">
-											<!--*************** Signup     form*******  -->
-											<div class="row"> 
-												<div class="col-sm-6">
-													<div class="form-group label-floating ">
-														<label class="control-label">Name</label>
-														<input type="text" value="<?=$_SESSION['name'];?>" id="regname" name="name" class="form-control" required="">
-														<span class="material-input"></span></div>
-													</div>
-													<div class="col-sm-6">
-														<div class="form-group label-floating">
-															<label class="control-label">Date of birth</label>
-															<input value = <?=$_SESSION['dob'];?> id="regdob" type="text" value="01/01/1995" name="dob" class="form-control datepicker">
-															<span class="material-input"></span></div>
-														</div>
-													</div>
-																							
-														<div class="row"> 
-															<div class="col-sm-12">
-																<div class="form-group label-floating">
-																	<label class="control-label">Password</label>
-																	<input type="text" value = <?=$_SESSION['passw'];?> id="regpassword" name="password" class="form-control">
-																	<span class="material-input"></span></div>
-																</div>
-															</div>
-															<div class="row"> 
-																<div class="col-sm-12">
-																	<div class="form-group label-floating">
-																		<label class="control-label">Phone</label>
-																		<input type="number" value = <?=$_SESSION['phone'];?> id="regphone" name="phone" class="form-control">
-																		<span class="material-input"></span></div>
-																	</div>
-																</div>
-																<div class="row"> 
-																	<div class="col-sm-12">
-																		<div class="form-group label-floating">
-																			<label class="control-label">About yourself</label>
-																			<textarea id="regdescription" rows="4" name="description" class="form-control"></textarea>
-																			<span class="material-input"></span></div>
-																		</div>
-																	</div>
-																</form>
+					<div class="col-md-offset-2 col-md-6">
+						<div class="tab-content gallery">
+							<div class="tab-pane active" id="personal">
+	                            <div class="row">                           	
+                            		<div class="card">
+                            			<div class="content">
+                            				<div class="row">
+                            					<div class="col-sm-12">
+													<div class="alert alert-danger basic-profile-error hide">
+														<div class="container-fluid">
+															<div class="alert-icon">
+																<i class="material-icons">error_outline</i>
 															</div>
 															
+															<span class="error-text"></span>
 														</div>
 													</div>
-
-
-
-
-
-
-
-
-
+												</div>
+                            				</div>
+	                            			<form id="basic_profile">
+	                            				<div class="form-group label-floating">
+													<label class="control-label">Name</label>
+													<input type="text" id="name" name="name" class="form-control" value="<?=$response['user']['name'];?>" />
+												</div>
+												<div class="form-group label-floating">
+													<label class="control-label">Password</label>
+													<input type="text" id="password" name="password" class="form-control" />
+												</div>
+												<!-- <div class="form-group">
+													<label class="control-label no-margin-top" style="font-size: 14px;">Update Picture</label>
+													<input type="file" id="profile_pic" name="profile_pic" class="form-control" />
+												</div> -->
+												<div class="form-group label-floating">
+													<label class="control-label">Phone</label>
+													<input type="text" id="phone" name="phone" class="form-control" value="<?=$response['user']['phone'];?>" />
+												</div>
+												<div class="form-group label-floating">
+													<label class="control-label">Email</label>
+													<input type="text" id="email" name="email" class="form-control" value="<?=$response['user']['email'];?>" />
+												</div>
+												<div class="form-group label-floating">
+													<label class="control-label">DOB</label>
+													<input type="text" id="dob" name="dob" class="form-control datepicker" value="<?=$response['user']['dob'];?>" />
+												</div>
+												<div class="form-group label-floating">
+													<label class="control-label">About me</label>
+													<textarea id="description" name="description" class="form-control" rows="3"><?=$response['user']['description'];?></textarea>
+												</div>
+	                            			</form>
+	                            			<div class="row text-right">
+												<button id="btn-basic-profile" type="button" class="btn btn-info btn-simple">Save</button>
 											</div>
-											<div class="modal-footer">
-												<div class="row"> 
-
-													<input type="submit" value="Update" class="btn btn-info" text-align="center" id="signup1">
-
+                            			</div>
+                            		</div>
+	                            </div>
+	                        </div>
+	                        <div class="tab-pane text-center" id="qualification">
+								<div class="row" style="position: relative;">
+									<div class="timeline"></div>
+									<div class="col-md-12 text-center" style="background: #fff;margin-bottom: 20px;">
+										<big>Born in <?=end(explode('/',$response['user']['dob']));?></big>
+									</div>
+									<?php foreach($response['qualifications'] as $qualification):?>
+										<div class="card">
+											<div class="content">
+												<big><?=$qualification['name'];?> from <?=$qualification['institute'];?> in year <?=$qualification['year'];?>
+												</big>
+												<i class="material-icons delete-icon-btn delete-edu" data-id="<?=$qualification['id'];?>">close</i>
+											</div>
+										</div>
+									<?php endforeach;?>
+									<div class="card">
+										<div class="content">
+											<form id="qualification-form">
+												<div class="row text-left">
+													<div class="col-md-10 ">
+														<div class="form-group label-floating">
+															<label class="control-label">Degree</label>
+															<input type="text" id="degree" name="name" class="form-control" />
+														</div>
+													</div>
+													<div class="col-md-2">
+														<div class="form-group label-floating">
+															<label class="control-label">Year</label>
+															<input type="text" id="degree-year" name="year" class="form-control" />
+														</div>
+													</div>
+												</div>
+												<div class="row text-left">
+													<div class="col-md-12 ">
+														<div class="form-group label-floating">
+															<label class="control-label">Institute</label>
+															<input type="text" id="degree-institute" name="institute" class="form-control" />
+														</div>
+													</div>
+												</div>
+											</form>
+											<div class="row text-right">
+												<button id="btn-education" type="button" class="btn btn-info btn-simple">Add</button>
+											</div>
+										</div>
+									</div>
+								</div>
+	                        </div>
+							<div class="tab-pane text-center" id="work">
+								<div class="row" style="position: relative;">
+									<?php foreach($response['experience'] as $experience):?>
+										<div class="card">
+											<div class="content text-left">
+												<i class="material-icons delete-icon-btn delete-exp" data-id="<?=$qualification['id'];?>">close</i>
+												<big>As a <b><?=$experience['title'];?></b></big>
+												<p>At <a href="<?=$experience['company_site'];?>" target="_blank"><?=$experience['company']?></a> for <?=$experience['years']?> years</p>
+											</div>
+										</div>
+									<?php endforeach;?>
+									<div class="card">
+										<div class="content">
+											<form id="experience-form">
+												<div class="row text-left">
+													<div class="col-md-10">
+														<div class="form-group label-floating">
+															<label class="control-label">Title</label>
+															<input type="text" id="job-title" name="title" class="form-control" />
+														</div>
+													</div>
+													<div class="col-md-2">
+														<div class="form-group label-floating">
+															<label class="control-label">Years</label>
+															<input type="text" id="job-year" name="years" class="form-control" />
+														</div>
+													</div>
+												</div>
+												<div class="row text-left">
+													<div class="col-md-6">
+														<div class="form-group label-floating">
+															<label class="control-label">Company</label>
+															<input type="text" id="company" name="company" class="form-control" />
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group label-floating">
+															<label class="control-label">Company Site</label>
+															<input type="text" id="company_site" name="company_site" class="form-control" />
+														</div>
+													</div>
+												</div>
+											</form>
+											<div class="row text-right">
+												<button id="btn-education" type="button" class="btn btn-info btn-simple">Add</button>
+											</div>
+										</div>
+									</div>
+								</div>
+	                        </div>
+	                        <div class="tab-pane text-center" id="skills">
+									<div class="row">
+										<div class="col-md-12 skills-form">
+											<?php foreach($response['skills'] as $skill):?>
+													<div class="row" style="margin-bottom: 20px;">
+														<div class="col-md-3 text-right"><b><?=$skill['name'];?></b></div>
+														<div class="col-md-9" style="padding-top: 10px;">
+															<!-- <div class="slider" data-value="<?=$skill['percentage'];?>"></div> -->
+															<div class="progress">
+																<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$skill['percentage'];?>%;">
+																<span class="sr-only"><?=$skill['percentage'];?>%</span>
+																</div>
+															</div>
+														</div>
+													</div>
+											<?php endforeach;?>
+										</div>
+										<div class="col-md-12">
+											<div class="card">
+												<div class="content">
+													<form id="skill-form">
+														<div class="row text-left">
+															<div class="col-md-3">
+																<div class="form-group label-floating">
+																	<label class="control-label">Skill</label>
+																	<input type="text" id="skill-name" name="name" class="form-control" />
+																</div>
+															</div>
+															<div class="col-md-9" style="padding-top: 30px;">
+																<div class="new-skill-slider slider" data-value="35"></div>
+															</div>
+														</div>
+													</form>
+													<!-- <div class="row text-right">
+														<button id="btn-skill-add" type="button" class="btn btn-info btn-simple">Add</button>
+													</div> -->
 												</div>
 											</div>
 										</div>
-									</form>
-
-
-									<!--form end-->
-
-
+										<div class="row text-right">
+											<button id="btn-skill-save" type="button" class="btn btn-info btn-simple">Save</button>
+										</div>
+									</div>
 								</div>
-
-							</div>
-						</div>
+	                        </div>
+	                    </div>
 					</div>
-
 				</div>
+			</div>
+		</div>
 
-				<?php require_once '/layouts/footer.php';?>
+    </div>
+    
+    <?php require_once 'layouts/footer.php';?>
 
-			</body>
-			<!--   Core JS Files   -->
-			<script src="assets/js/jquery.min.js" type="text/javascript"></script>
-			<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-			<script src="assets/js/material.min.js"></script>
+	<!--   Core JS Files   -->
+	<script src="assets/js/jquery.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/js/material.min.js"></script>
 
-			<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-			<script src="assets/js/nouislider.min.js" type="text/javascript"></script>
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="assets/js/nouislider.min.js" type="text/javascript"></script>
 
-			<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-			<script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
 
-			<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-			<script src="assets/js/material-kit.js" type="text/javascript"></script>
-			<script type="text/javascript">
-				var name,mail,pass,num,dob,skills,projects,exp;
-				$(document).ready(function(){
-					$("#regemail").val("mail");
-		// loadData();
-		// writeData();
-
-	});
-				function loadData(){
-					$.post("app/login.php",$("form#form_signup").serializeArray(),function(data){
-						var data1 = JSON.parse(data);
-						name = data1.name;
-						mail = data1.name;
-						pass = data1.name;
-						num = data1.name;
-						dob = data1.name;
-						skills = data1.name;
-						projects = data1.name;
-						exp = data1.name;
-
-
-					});
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="assets/js/material-kit.js" type="text/javascript"></script>
+	<script src="assets/js/common.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(".slider").each(function(){
+			var val = $(this).attr("data-value");
+			console.log(val);
+			$(this).noUiSlider({
+				start: [val],
+				connect: "lower",
+				range: {
+				    min: 0,
+				    max: 100
 				}
-				function writeData(){
-					$("#regname").val(name);
-					$("#regemail").val(mail);
-					$("#regpassword").val(pass);
-					$("#regnum").val(num);
-					$("#regdob").val(dob);
-					$("#regskills").val(skills);
-					$("#regprojects").val(projects);
-					$("#regexp").val(exp);
-				}
-			</script>
-			</html>
+			});
+		});
+	</script>
+</body>
+</html>

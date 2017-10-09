@@ -45,3 +45,18 @@
 	height: calc(100% + 20px);
 	border-right: 1px dashed #adadad;
 }
+
+.no-margin{
+	margin:0 !important;
+}
+.no-margin-top{
+	margin-top:0 !important;
+}
+
+.delete-icon-btn{
+	font-size: 18px;
+    float: right;
+    line-height: 22px;
+    cursor: pointer;
+    color: #757575;
+}

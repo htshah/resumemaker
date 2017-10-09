@@ -16,7 +16,6 @@
 		    $row = $result->fetch_assoc();
 		    $_SESSION['id'] = $row['id'];
 		    $_SESSION['name'] = $row['name'];
-		    $_SESSION['profile_pic'] = $row['profile_pic'];
 		}else{
 			$response['error'] = "Login unsuccessful";
 		}
