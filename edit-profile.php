@@ -26,6 +26,11 @@
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="assets/css/material-kit.css" rel="stylesheet"/>
 	<link href="assets/css/style.css" rel="stylesheet"/>
+	<style type="text/css">
+		.error-box *,.success-box *{
+			color: #fff !important;
+		}
+	</style>
 
 </head>
 <body class="profile-page">
@@ -75,14 +80,25 @@
                             		<div class="card">
                             			<div class="content">
                             				<div class="row">
-                            					<div class="col-sm-12">
-													<div class="alert alert-danger basic-profile-error hide">
+                            					<div class="col-sm-12 error-box hide">
+													<div class="alert alert-danger basic-profile-error">
 														<div class="container-fluid">
 															<div class="alert-icon">
 																<i class="material-icons">error_outline</i>
 															</div>
 															
-															<span class="error-text"></span>
+															<span class="text"></span>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-12 success-box hide">
+													<div class="alert alert-success basic-profile-error">
+														<div class="container-fluid">
+															<div class="alert-icon">
+																<i class="material-icons">check</i>
+															</div>
+															
+															<span class="text"></span>
 														</div>
 													</div>
 												</div>
@@ -125,20 +141,46 @@
 	                            </div>
 	                        </div>
 	                        <div class="tab-pane text-center" id="qualification">
-								<div class="row" style="position: relative;">
+	                        	<div class="row">
+                					<div class="col-sm-12 error-box hide">
+										<div class="alert alert-danger basic-profile-error">
+											<div class="container-fluid">
+												<div class="alert-icon">
+													<i class="material-icons">error_outline</i>
+												</div>
+												
+												<span class="text"></span>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-12 success-box hide">
+										<div class="alert alert-success basic-profile-error">
+											<div class="container-fluid">
+												<div class="alert-icon">
+													<i class="material-icons">check</i>
+												</div>
+												
+												<span class="text"></span>
+											</div>
+										</div>
+									</div>
+                				</div>
+								<div class="row row-content" style="position: relative;">
 									<div class="timeline"></div>
 									<div class="col-md-12 text-center" style="background: #fff;margin-bottom: 20px;">
 										<big>Born in <?=end(explode('/',$response['user']['dob']));?></big>
 									</div>
-									<?php foreach($response['qualifications'] as $qualification):?>
-										<div class="card">
-											<div class="content">
-												<big><?=$qualification['name'];?> from <?=$qualification['institute'];?> in year <?=$qualification['year'];?>
-												</big>
-												<i class="material-icons delete-icon-btn delete-edu" data-id="<?=$qualification['id'];?>">close</i>
+									<div class="row-content">
+										<?php foreach($response['qualifications'] as $qualification):?>
+											<div class="card">
+												<div class="content">
+													<big><?=$qualification['name'];?> from <?=$qualification['institute'];?> in year <?=$qualification['year'];?>
+													</big>
+													<i class="material-icons delete-icon-btn delete-edu" data-id="<?=$qualification['id'];?>">close</i>
+												</div>
 											</div>
-										</div>
-									<?php endforeach;?>
+										<?php endforeach;?>
+									</div>
 									<div class="card">
 										<div class="content">
 											<form id="qualification-form">
@@ -173,16 +215,42 @@
 								</div>
 	                        </div>
 							<div class="tab-pane text-center" id="work">
-								<div class="row" style="position: relative;">
-									<?php foreach($response['experience'] as $experience):?>
-										<div class="card">
-											<div class="content text-left">
-												<i class="material-icons delete-icon-btn delete-exp" data-id="<?=$qualification['id'];?>">close</i>
-												<big>As a <b><?=$experience['title'];?></b></big>
-												<p>At <a href="<?=$experience['company_site'];?>" target="_blank"><?=$experience['company']?></a> for <?=$experience['years']?> years</p>
+								<div class="row">
+                					<div class="col-sm-12 error-box hide">
+										<div class="alert alert-danger basic-profile-error">
+											<div class="container-fluid">
+												<div class="alert-icon">
+													<i class="material-icons">error_outline</i>
+												</div>
+												
+												<span class="text"></span>
 											</div>
 										</div>
-									<?php endforeach;?>
+									</div>
+									<div class="col-sm-12 success-box hide">
+										<div class="alert alert-success basic-profile-error">
+											<div class="container-fluid">
+												<div class="alert-icon">
+													<i class="material-icons">check</i>
+												</div>
+												
+												<span class="text"></span>
+											</div>
+										</div>
+									</div>
+                				</div>
+								<div class="row" style="position: relative;">
+									<div class="row-content">
+										<?php foreach($response['experience'] as $experience):?>
+											<div class="card">
+												<div class="content text-left">
+													<i class="material-icons delete-icon-btn delete-exp" data-id="<?=$experience['id'];?>">close</i>
+													<big>As a <b><?=$experience['title'];?></b></big>
+													<p>At <a href="<?=$experience['company_site'];?>" target="_blank"><?=$experience['company']?></a> for <?=$experience['years']?> years</p>
+												</div>
+											</div>
+										<?php endforeach;?>
+									</div>
 									<div class="card">
 										<div class="content">
 											<form id="experience-form">
@@ -216,7 +284,7 @@
 												</div>
 											</form>
 											<div class="row text-right">
-												<button id="btn-education" type="button" class="btn btn-info btn-simple">Add</button>
+												<button id="btn-exp" type="button" class="btn btn-info btn-simple">Add</button>
 											</div>
 										</div>
 									</div>
@@ -277,6 +345,27 @@
     
     <?php require_once 'layouts/footer.php';?>
 
+
+    <div class="templates hide">
+    	<div class="qualification">
+    		<div class="card">
+				<div class="content">
+					<big></big>
+					<i class="material-icons delete-icon-btn delete-edu">close</i>
+				</div>
+			</div>
+    	</div>
+    	<div class="work">
+    		<div class="card">
+				<div class="content text-left">
+					<i class="material-icons delete-icon-btn delete-exp">close</i>
+					<big>As a <b></b></big>
+					<p>At <a href="" target="_blank"></a> for <span class="years"></span> years</p>
+				</div>
+			</div>
+    	</div>
+    </div>
+
 	<!--   Core JS Files   -->
 	<script src="assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -305,5 +394,6 @@
 			});
 		});
 	</script>
+	<script src="assets/js/edit-profile.js" type="text/javascript"></script>
 </body>
 </html>

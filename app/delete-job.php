@@ -24,7 +24,7 @@
 		$uid = $_SESSION['id'];
 
 		$sql = "DELETE from $tablename where `id`=$id and `uid`=$uid;";
-		
+		$response['query'] = $sql;
 		if($conn->query($sql) == true && $conn->affected_rows > 0){
 			$response['success'] = 1;
 			$response['message'] = "Job experience deleted successfully";
