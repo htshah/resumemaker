@@ -19,11 +19,11 @@
 						Home
 					</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a href="/resumemaker/resumes.html">
 						Resumes
 					</a>
-				</li>
+				</li> -->
 				<?php if(!isset($_SESSION['id'])):?>
 					<li>
 						<a href="#!" data-toggle='modal' data-target='#myModal'>

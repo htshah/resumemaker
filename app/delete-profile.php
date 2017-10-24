@@ -15,7 +15,7 @@
 
 	if($conn->query($sql) == true){
 		session_destroy();
-		die("<script>window.location.href='/resumemaker/error.php?e=Account deleted successfully';</script>");
+		die("<script>window.location.href='/resumemaker/error.php?e=Account deleted successfully&desc=';</script>");
 	}
 	die("<script>window.location.href='/resumemaker/error.php?e=Something went wrong. Please try again later';</script>");
 ?>

@@ -35,12 +35,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<?php if(isset($_GET['e'])):?>
-							<h1 class="title"><?=$_GET['e'];?></h1>
-						<?php else:?>						
-							<h1 class="title">Something went wrong!</h1>
-						<?php endif;?>
-						<h4>You were trying to do something and the system could not process it. Please try again later.</h4>
+						<h1 class="title">
+							<?php if(isset($_GET['e'])):?>
+								<?=$_GET['e'];?>
+							<?php else:?>						
+								Something went wrong!
+							<?php endif;?>
+						</h1>
+						<h4>
+							<?php if(isset($_GET['desc'])):?>
+								<?=$_GET['desc'];?>
+							<?php else:?>
+								You were trying to do something and the system could not process it. Please try again later.
+							<?php endif;?>
+						</h4>
 					</div>
 				</div>
 			</div>
