@@ -8,19 +8,19 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/resumemaker">Resume Maker</a>
+			<a class="navbar-brand" href="/">Resume Maker</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="navigation-example">
 			<ul class="nav navbar-nav navbar-right">
 				
 				<li>
-					<a href="/resumemaker">
+					<a href="/">
 						Home
 					</a>
 				</li>
 				<!-- <li>
-					<a href="/resumemaker/resumes.html">
+					<a href="/resumes.html">
 						Resumes
 					</a>
 				</li> -->
@@ -41,23 +41,23 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=$_SESSION['name'];?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="/resumemaker/profile.php?id=<?=$_SESSION['id'];?>">
+								<a href="/profile.php?id=<?=$_SESSION['id'];?>">
 									View profile
 								</a>
 							</li>
 							<li>
-								<a href="/resumemaker/edit-profile.php">
+								<a href="/edit-profile.php">
 									Edit profile
 								</a>
 							</li>
 							<li>
-								<a href="/resumemaker/app/logout.php">
+								<a href="/app/logout.php">
 									Logout
 								</a>
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="/resumemaker/app/delete-profile.php">
+								<a href="/app/delete-profile.php">
 									Delete account
 								</a>
 							</li>
